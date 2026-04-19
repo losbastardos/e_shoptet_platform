@@ -462,6 +462,7 @@ deploy-production:
 
 ### 6.2 PHP-CS-Fixer konfigurácia
 
+```
 <?php
 declare(strict_types=1);
 use PhpCsFixer\Config;
@@ -489,9 +490,11 @@ return (new Config())
         'single_quote' => true,
         'yoda_style' => ['equal' => false, 'identical' => false],
     ]);
+```
 
 ### 6.3 PHPStan konfigurácia
 
+```
 includes:
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
@@ -503,9 +506,11 @@ parameters:
     checkMissingIterableValueType: true
     checkGenericClassInNonGenericObjectType: true
     checkExplicitMixed: true
+```
 
 ### 6.4 Rector konfigurácia
 
+```
 <?php
 declare(strict_types=1);
 use Rector\Config\RectorConfig;
@@ -522,6 +527,7 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::TYPE_DECLARATION,
     ]);
 };
+```
 
 ---
 
@@ -559,6 +565,7 @@ FÁZA 5: UKONČENIE PODPORY
 
 ### 7.2 Štruktúra modulu
 
+```
 module-{názov}/
 - .github/workflows/ci.yml, release.yml, security.yml
 - .github/CODEOWNERS
@@ -569,9 +576,11 @@ module-{názov}/
 - tests/Unit/, Integration/, Functional/, Fixtures/
 - docs/README.md, INSTALL.md, CONFIGURATION.md, API.md
 - .php-cs-fixer.dist.php, phpstan.neon, rector.php, composer.json, README.md
+```
 
 ### 7.3 Module composer.json
 
+```
 {
     "name": "yourcompany/module-{názov}",
     "type": "symfony-bundle",
@@ -597,6 +606,7 @@ module-{názov}/
         "stan": "phpstan analyse"
     }
 }
+```
 
 ---
 
@@ -624,6 +634,7 @@ SHOPTET API (REST)
 
 ### 8.2 Implementácia API klienta
 
+```
 <?php
 declare(strict_types=1);
 namespace YourCompany\Core\ApiClient;
@@ -674,9 +685,11 @@ final class ShoptetClient implements ShoptetClientInterface
         }
     }
 }
+```
 
 ### 8.3 Endpoint pattern
 
+```
 <?php
 declare(strict_types=1);
 namespace YourCompany\Core\ApiClient\Endpoint;
@@ -713,9 +726,11 @@ final readonly class ProductsEndpoint extends AbstractEndpoint
         );
     }
 }
+```
 
 ### 8.4 Hook handler pattern
 
+```
 <?php
 declare(strict_types=1);
 namespace App\Hook;
@@ -751,6 +766,7 @@ final readonly class OrderCreatedHandler extends AbstractHookHandler
         }
     }
 }
+```
 
 ---
 
@@ -803,6 +819,7 @@ Shoptet API nasadenie:
 
 ### 9.2 Konfigurácia nasadenia
 
+```
 deployment:
   prostredia:
     staging:
@@ -843,9 +860,10 @@ deployment:
       - názov: "Homepage Load", url: "/", expected_status: 200, expected_content: "Shoptet"
       - názov: "API Health", url: "/api/health", expected_status: 200, timeout: 5
       - názov: "Product List", url: "/api/products", expected_status: 200, validate_json: true
-
+```
 ### 9.3 Deployment workflow
 
+```
 názov: Deploy to Shoptet
 
 spustenie:
@@ -882,6 +900,7 @@ joby:
       - run: ./bin/smoke-tests.sh --environment=${{ inputs.prostredie }}
       - uses: 8398a7/action-slack@v3
         with: status: success, channel: '#deployments'
+```
 
 ---
 
@@ -973,6 +992,7 @@ Míľnik: Platforma pripravená na 100+ projektov
 
 ### Príloha C: Emergency rollback
 
+```
 #!/bin/bash
 # emergency-rollback.sh
 PROSTREDIE=$1
@@ -982,6 +1002,7 @@ gh workflow disable deploy.yml
 gh workflow run rollback.yml -f environment=$PROSTREDIE -f version=$VERZIA
 slack-post "#incidents" "Rollback $PROSTREDIE to $VERZIA"
 gh issue create --title "INCIDENT: Rollback $PROSTREDIE" --label "incident,p0"
+```
 
 ### Príloha D: Reakcia na security incident
 
