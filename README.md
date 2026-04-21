@@ -14,6 +14,8 @@
 
 **Enterprise Shoptet Development Platform** je komplexná infraštruktúra určená pre Shoptet Premium Partnerov, ktorí potrebujú vyvíjať, nasadzovať a udržiavať rozsiahle portfólio klientských projektov.
 
+Hlavný technický dokument projektu je [enterprise-shoptet-platform-specification.md](./enterprise-shoptet-platform-specification.md), ktorý obsahuje detailnú architektúru, governance model, CI/CD špecifikáciu a bezpečnostné politiky.
+
 ### Hlavné schopnosti
 
 - **Multi-tenant architektúra** — Každý projekt je plne izolovaný, pričom zdieľa verzované core komponenty
@@ -238,11 +240,14 @@ Prečítajte si náš [Contributing Guide](CONTRIBUTING.md) a [Code of Conduct](
 
 ## Dokumentácia
 
-- [Prehľad architektúry](docs/ARCHITECTURE.md)
-- [Dokumentácia API klienta](docs/API.md)
-- [Príručka vývoja modulov](docs/MODULES.md)
-- [Postupy nasadenia](docs/DEPLOYMENT.md)
-- [Bezpečnostné politiky](docs/SECURITY.md)
+- [Hlavná technická špecifikácia](./enterprise-shoptet-platform-specification.md) — kompletný referenčný dokument pre architektúru, riadenie repozitárov, bezpečnosť a CI/CD pipeline
+- [Prehľad architektúry](./docs/ARCHITECTURE.md)
+- [Dokumentácia API klienta](./docs/API.md)
+- [Príručka vývoja modulov](./docs/MODULES.md)
+- [Postupy nasadenia](./docs/DEPLOYMENT.md)
+- [Bezpečnostné politiky](./docs/SECURITY.md)
+- [README](./README.md) — stručný prehľad platformy, technologického stacku, workflow a roadmapy
+- [LICENSE](./LICENSE) — licenčné podmienky repozitára
 
 ---
 
